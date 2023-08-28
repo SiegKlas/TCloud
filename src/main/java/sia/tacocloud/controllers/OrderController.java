@@ -1,7 +1,6 @@
 package sia.tacocloud.controllers;
 
 import jakarta.validation.Valid;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.support.SessionStatus;
 import sia.tacocloud.data.TacoOrder;
 import sia.tacocloud.repositories.OrderRepository;
 
-@Slf4j
 @Controller
 @RequestMapping("/orders")
 @SessionAttributes("tacoOrder")
@@ -38,7 +36,6 @@ public class OrderController {
         }
 
         orderRepo.save(order);
-        log.info("Order submitted: {}", order);
         sessionStatus.setComplete();
 
         return "redirect:/";
