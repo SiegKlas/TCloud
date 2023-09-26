@@ -17,7 +17,7 @@ import sia.tacocloud.repositories.OrderRepository;
 @SessionAttributes("tacoOrder")
 public class OrderController {
 
-    private OrderRepository orderRepo;
+    private final OrderRepository orderRepo;
 
     @Autowired
     public OrderController(OrderRepository orderRepo) {

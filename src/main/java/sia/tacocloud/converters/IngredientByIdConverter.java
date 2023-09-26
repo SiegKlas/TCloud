@@ -1,5 +1,6 @@
 package sia.tacocloud.converters;
 
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
@@ -9,7 +10,7 @@ import sia.tacocloud.repositories.IngredientRepository;
 @Component
 public class IngredientByIdConverter implements Converter<String, Ingredient> {
 
-    private IngredientRepository ingredientRepo;
+    private final IngredientRepository ingredientRepo;
 
     @Autowired
     public IngredientByIdConverter(IngredientRepository ingredientRepo) {
@@ -17,7 +18,7 @@ public class IngredientByIdConverter implements Converter<String, Ingredient> {
     }
 
     @Override
-    public Ingredient convert(String id) {
+    public Ingredient convert(@NonNull String id) {
         return ingredientRepo.findById(id).orElse(null);
     }
 }
